@@ -1,15 +1,473 @@
-"id";"title"
-1;"main"
-2;"organic"
-3;"glass"
-6;"alloys"
-7;"commercial plastics"
-8;"doped crystals"
-9;"exotic"
-10;"index-matching liquids"
-11;"liquid crystals"
-12;"mixed crystals"
-13;"mixed gases"
-14;"mixed organic"
-15;"other"
-16;"resists"
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.4.1
+-- Dumped by pg_dump version 9.4.0
+-- Started on 2015-04-13 23:00:36 EDT
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 191 (class 1259 OID 20918)
+-- Name: refractiveindexdatabase_category; Type: TABLE; Schema: public; Owner: fdtddjango; Tablespace: 
+--
+
+CREATE TABLE refractiveindexdatabase_category (
+    id integer NOT NULL,
+    title text NOT NULL
+);
+
+
+ALTER TABLE refractiveindexdatabase_category OWNER TO fdtddjango;
+
+--
+-- TOC entry 190 (class 1259 OID 20916)
+-- Name: refractiveindexdatabase_category_id_seq; Type: SEQUENCE; Schema: public; Owner: fdtddjango
+--
+
+CREATE SEQUENCE refractiveindexdatabase_category_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE refractiveindexdatabase_category_id_seq OWNER TO fdtddjango;
+
+--
+-- TOC entry 2333 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: refractiveindexdatabase_category_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fdtddjango
+--
+
+ALTER SEQUENCE refractiveindexdatabase_category_id_seq OWNED BY refractiveindexdatabase_category.id;
+
+
+--
+-- TOC entry 193 (class 1259 OID 20929)
+-- Name: refractiveindexdatabase_element; Type: TABLE; Schema: public; Owner: fdtddjango; Tablespace: 
+--
+
+CREATE TABLE refractiveindexdatabase_element (
+    id integer NOT NULL,
+    title text NOT NULL,
+    category_id integer NOT NULL
+);
+
+
+ALTER TABLE refractiveindexdatabase_element OWNER TO fdtddjango;
+
+--
+-- TOC entry 192 (class 1259 OID 20927)
+-- Name: refractiveindexdatabase_element_id_seq; Type: SEQUENCE; Schema: public; Owner: fdtddjango
+--
+
+CREATE SEQUENCE refractiveindexdatabase_element_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE refractiveindexdatabase_element_id_seq OWNER TO fdtddjango;
+
+--
+-- TOC entry 2334 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: refractiveindexdatabase_element_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: fdtddjango
+--
+
+ALTER SEQUENCE refractiveindexdatabase_element_id_seq OWNED BY refractiveindexdatabase_element.id;
+
+
+--
+-- TOC entry 2204 (class 2604 OID 20921)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: fdtddjango
+--
+
+ALTER TABLE ONLY refractiveindexdatabase_category ALTER COLUMN id SET DEFAULT nextval('refractiveindexdatabase_category_id_seq'::regclass);
+
+
+--
+-- TOC entry 2205 (class 2604 OID 20932)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: fdtddjango
+--
+
+ALTER TABLE ONLY refractiveindexdatabase_element ALTER COLUMN id SET DEFAULT nextval('refractiveindexdatabase_element_id_seq'::regclass);
+
+
+--
+-- TOC entry 2326 (class 0 OID 20918)
+-- Dependencies: 191
+-- Data for Name: refractiveindexdatabase_category; Type: TABLE DATA; Schema: public; Owner: fdtddjango
+--
+
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (1, 'main');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (2, 'organic');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (3, 'glass');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (6, 'alloys');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (7, 'commercial plastics');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (8, 'doped crystals');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (9, 'exotic');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (10, 'index-matching liquids');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (11, 'liquid crystals');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (12, 'mixed crystals');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (13, 'mixed gases');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (14, 'mixed organic');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (15, 'other');
+INSERT INTO refractiveindexdatabase_category (id, title) VALUES (16, 'resists');
+
+
+--
+-- TOC entry 2335 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: refractiveindexdatabase_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fdtddjango
+--
+
+SELECT pg_catalog.setval('refractiveindexdatabase_category_id_seq', 16, true);
+
+
+--
+-- TOC entry 2328 (class 0 OID 20929)
+-- Dependencies: 193
+-- Data for Name: refractiveindexdatabase_element; Type: TABLE DATA; Schema: public; Owner: fdtddjango
+--
+
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (3, 'Ag', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (4, 'Ag3AsS3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (5, 'AgBr', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (6, 'AgCl', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (7, 'AgGaS2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (8, 'AgGaSe2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (9, 'Al', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (10, 'Al2O3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (11, 'AlAs', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (12, 'AlN', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (13, 'AlSb', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (14, 'Ar', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (15, 'As2S3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (16, 'Au', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (17, 'B', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (18, 'BaB2O4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (19, 'BaF2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (20, 'BaTiO3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (21, 'Be', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (22, 'BeO', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (23, 'Bi', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (24, 'Bi12GeO20', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (25, 'Bi12SiO20', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (26, 'Bi4Ge3O12', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (27, 'Bi4Ti3O12', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (28, 'BiB3O6', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (29, 'BP', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (30, 'C', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (31, 'CaCO3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (32, 'CaF2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (33, 'CaMoO4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (34, 'CaWO4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (35, 'CdGeAs2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (36, 'CdGeP2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (37, 'CdS', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (38, 'CdSe', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (39, 'CdTe', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (40, 'Ce', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (41, 'Co', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (42, 'CO2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (43, 'Cr', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (44, 'CS2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (45, 'CsBr', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (46, 'CsCl', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (47, 'CsF', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (48, 'CsI', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (49, 'CsLiB6O10', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (50, 'Cu', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (51, 'CuCl', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (52, 'CuGaS2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (53, 'D2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (54, 'D2O', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (55, 'Dy2O3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (56, 'Er', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (57, 'Eu', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (58, 'Fe', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (59, 'GaAs', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (60, 'GaN', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (61, 'GaP', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (62, 'GaS', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (63, 'GaSb', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (64, 'GaSe', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (65, 'Ge', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (66, 'GeO2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (67, 'H2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (68, 'H2O', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (69, 'He', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (70, 'Hf', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (71, 'Hg', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (72, 'HgS', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (73, 'Ho', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (74, 'In', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (75, 'InAs', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (76, 'InP', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (77, 'InSb', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (78, 'Ir', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (79, 'KBr', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (80, 'KCl', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (81, 'KF', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (82, 'KH2PO4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (83, 'KI', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (84, 'KNbO3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (85, 'Kr', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (86, 'KTaO3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (87, 'KTiOPO4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (88, 'LaF3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (89, 'Li', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (90, 'LiB3O5', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (91, 'LiBr', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (92, 'LiCaAlF6', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (93, 'LiCl', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (94, 'LiF', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (95, 'LiI', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (96, 'LiIO3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (97, 'LiNbO3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (98, 'Lu', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (99, 'Lu2O3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (100, 'LuAl3(BO3)4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (101, 'Mg', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (102, 'MgAl2O4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (103, 'MgF2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (104, 'MgO', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (105, 'Mn', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (106, 'Mo', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (107, 'MoO3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (108, 'N2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (109, 'Na', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (110, 'NaBr', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (111, 'NaCl', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (112, 'NaF', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (113, 'NaI', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (114, 'Nb', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (115, 'Nb2O5', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (116, 'Ne', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (117, 'NH3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (118, 'NH4H2PO4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (119, 'Ni', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (120, 'O2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (121, 'Os', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (122, 'Pb', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (123, 'Pb5Ge3O11', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (124, 'PbF2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (125, 'PbMoO4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (126, 'PbS', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (127, 'PbSe', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (128, 'PbTe', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (129, 'PbTiO3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (130, 'Pd', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (131, 'Pr', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (132, 'Pt', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (133, 'RbBr', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (134, 'RbCl', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (135, 'RbF', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (136, 'RbI', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (137, 'RbTiOPO4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (138, 'Re', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (139, 'Rh', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (140, 'Ru', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (141, 'Sc', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (142, 'Sc2O3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (143, 'Se', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (144, 'Si', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (145, 'Si3N4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (146, 'SiC', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (147, 'SiO', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (148, 'SiO2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (149, 'Sn', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (150, 'SrF2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (151, 'SrMoO4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (152, 'SrTiO3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (153, 'Ta', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (154, 'Ta2O5', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (155, 'Te', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (156, 'TeO2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (157, 'ThF4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (158, 'Ti', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (159, 'TiO2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (160, 'Tl3AsSe3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (161, 'TlBr', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (162, 'TlCl', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (163, 'Tm', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (164, 'V', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (165, 'W', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (166, 'Xe', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (167, 'Y2O3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (168, 'Y3Al5O12', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (169, 'Yb', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (170, 'Yb2O3', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (171, 'YLiF4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (172, 'YVO4', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (173, 'Zn', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (174, 'ZnGeP2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (175, 'ZnO', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (176, 'ZnS', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (177, 'ZnSe', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (178, 'ZnSiAs2', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (179, 'ZnTe', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (180, 'Zr', 1);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (181, 'ami', 3);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (182, 'barberini', 3);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (183, 'cdgm', 3);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (184, 'corning', 3);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (185, 'hikari', 3);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (186, 'hoya', 3);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (187, 'lightpath', 3);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (188, 'lzos', 3);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (190, 'ohara', 3);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (192, 'sumita', 3);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (193, 'vitron', 3);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (194, '(C16H14O3)n - polycarbonate', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (195, '(C5O2H8)n - poly(methyl methacrylate)', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (196, '(C6H10O5)n - cellulose', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (197, '(C6H9NO)n - polyvinylpyrrolidone', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (198, '(C8H8)n - polystyren', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (199, 'C2H3N - acetonitrile', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (200, 'C2H4O2 - acetic acid', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (201, 'C2H6O - ethanol', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (202, 'C2H6O2 - ethylene glycol', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (203, 'C3H6O - acetone', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (204, 'C3H8O - propanol', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (205, 'C3H8O3 - glycerol', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (206, 'C4H10O - butanol', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (207, 'C4H8O2 - dioxane', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (208, 'C5H12 - pentane', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (209, 'C5H12O - amyl alcohol', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (210, 'C5H12O2 - pentanediol', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (211, 'C6H12 - cyclohexane', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (212, 'C6H5NO2 - nitrobenzene', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (213, 'C6H6 - benzene', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (214, 'C7H8 - toluene', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (215, 'C8H18 - octane', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (216, 'C8H5KO4 - potassium hydrogen phthalate', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (217, 'C8H8 - styrene', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (218, 'C8H8O3 - methyl salicylate', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (219, 'C9H10O3 - ethyl salicylate', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (220, 'C9H8O - cinnamaldehyde', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (221, 'CCl4 - carbon tetrachloride', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (222, 'CH4 - methane', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (223, 'CH4N2O - urea', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (224, 'CH4O - methanol', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (225, 'CHBr3 - bromoform', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (226, 'CHCl3 - chloroform', 2);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (238, 'Nb-Sn', 6);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (239, 'V-Ga', 6);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (240, 'CR-39', 7);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (241, 'NAS-21', 7);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (242, 'Optorez1330', 7);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (243, 'ZeonexE48R', 7);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (244, 'Mg-LiTaO3', 8);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (245, 'Nb-RbTiOPO4', 8);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (246, 'metamaterials', 9);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (247, 'cargille', 10);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (248, '5CB', 11);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (249, '5PCH', 11);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (250, 'E44', 11);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (251, 'E7', 11);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (252, 'MLC-6241-000', 11);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (253, 'MLC-6608', 11);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (254, 'MLC-9200-000', 11);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (255, 'MLC-9200-100', 11);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (256, 'TL-216', 11);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (257, 'AlGaAs', 12);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (258, 'AlGaSb', 12);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (259, 'AlON', 12);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (260, 'GaInP', 12);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (261, 'HfO2-Y2O3', 12);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (262, 'In2O3-SnO2', 12);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (263, 'TlBr-TlCl', 12);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (264, 'TlBr-TlI', 12);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (265, 'ZrO2-Y2O3', 12);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (266, 'air', 13);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (267, '(C8H8)n-(C3H3N)m', 14);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (269, 'resists', 15);
+INSERT INTO refractiveindexdatabase_element (id, title, category_id) VALUES (270, 'soot', 15);
+
+
+--
+-- TOC entry 2336 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: refractiveindexdatabase_element_id_seq; Type: SEQUENCE SET; Schema: public; Owner: fdtddjango
+--
+
+SELECT pg_catalog.setval('refractiveindexdatabase_element_id_seq', 270, true);
+
+
+--
+-- TOC entry 2207 (class 2606 OID 20926)
+-- Name: refractiveindexdatabase_category_pkey; Type: CONSTRAINT; Schema: public; Owner: fdtddjango; Tablespace: 
+--
+
+ALTER TABLE ONLY refractiveindexdatabase_category
+    ADD CONSTRAINT refractiveindexdatabase_category_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2209 (class 2606 OID 20981)
+-- Name: refractiveindexdatabase_category_title_413c5859d4ce943f_uniq; Type: CONSTRAINT; Schema: public; Owner: fdtddjango; Tablespace: 
+--
+
+ALTER TABLE ONLY refractiveindexdatabase_category
+    ADD CONSTRAINT refractiveindexdatabase_category_title_413c5859d4ce943f_uniq UNIQUE (title);
+
+
+--
+-- TOC entry 2212 (class 2606 OID 20937)
+-- Name: refractiveindexdatabase_element_pkey; Type: CONSTRAINT; Schema: public; Owner: fdtddjango; Tablespace: 
+--
+
+ALTER TABLE ONLY refractiveindexdatabase_element
+    ADD CONSTRAINT refractiveindexdatabase_element_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2214 (class 2606 OID 20983)
+-- Name: refractiveindexdatabase_element_title_654e0710691283a8_uniq; Type: CONSTRAINT; Schema: public; Owner: fdtddjango; Tablespace: 
+--
+
+ALTER TABLE ONLY refractiveindexdatabase_element
+    ADD CONSTRAINT refractiveindexdatabase_element_title_654e0710691283a8_uniq UNIQUE (title);
+
+
+--
+-- TOC entry 2210 (class 1259 OID 20943)
+-- Name: refractiveindexdatabase_element_b583a629; Type: INDEX; Schema: public; Owner: fdtddjango; Tablespace: 
+--
+
+CREATE INDEX refractiveindexdatabase_element_b583a629 ON refractiveindexdatabase_element USING btree (category_id);
+
+
+--
+-- TOC entry 2215 (class 2606 OID 20938)
+-- Name: b2141b7e06df2e32753d29c61e44d264; Type: FK CONSTRAINT; Schema: public; Owner: fdtddjango
+--
+
+ALTER TABLE ONLY refractiveindexdatabase_element
+    ADD CONSTRAINT b2141b7e06df2e32753d29c61e44d264 FOREIGN KEY (category_id) REFERENCES refractiveindexdatabase_category(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+-- Completed on 2015-04-13 23:00:37 EDT
+
+--
+-- PostgreSQL database dump complete
+--
+
