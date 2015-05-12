@@ -8,7 +8,7 @@ mypath = BASE_DIR + '/database/other/other'
 
 from sqlalchemy.orm import sessionmaker
 from sqlmap import db_connect, create_table, Elementlist, Element
-from settings import access_key, secret_key
+from .secret_key import access_key, secret_key
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 import uuid
