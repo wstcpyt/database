@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
-settings.py
 .idea
 .DS_Store
+*.pyc
 
+secret_key.py

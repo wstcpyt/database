@@ -1,9 +1,9 @@
 __author__ = 'yutongpang'
 import settings
-from sqlalchemy import create_engine, Column, String, Integer, ForeignKey
+from sqlalchemy import create_engine, Column, String, Integer, ForeignKey, Float
 from sqlalchemy.engine.url import URL
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship
 
 DeclarativeBase = declarative_base()
 
@@ -27,5 +27,17 @@ class Element(DeclarativeBase):
     __tablename__ = 'refractiveindexdatabase_element'
     id = Column(Integer, primary_key=True)
     category_id = Column(Integer, ForeignKey('refractiveindexdatabase_category.id'))
-    category = relationship(Category)
+    category = relationship('Category')
     title = Column(String, unique=True)
+    elementlist = relationship('Elementlist')
+
+class Elementlist(DeclarativeBase):
+    __tablename__ = 'refractiveindexdatabase_elementlist'
+    id = Column(Integer, primary_key=True)
+    element_id = Column(Integer, ForeignKey('refractiveindexdatabase_element.id'))
+    element = relationship('Element')
+    title = Column(String)
+    references = Column(String, default='')
+    comments = Column(String, default='')
+    type = Column(String)
+    datalink = Column(String)
