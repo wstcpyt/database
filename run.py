@@ -1,6 +1,10 @@
 __author__ = 'yutongpang'
 import os
 import yaml
+import urllib2
+from termcolor import colored
+
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 print(BASE_DIR)
@@ -8,10 +12,8 @@ mypath = BASE_DIR + '/database/other/other'
 
 from sqlalchemy.orm import sessionmaker
 from sqlmap import db_connect, create_table, Elementlist, Element
-from .secret_key import access_key, secret_key
-from boto.s3.connection import S3Connection
-from boto.s3.key import Key
-import uuid
+from sqlalchemy import update
+from sqlalchemy import and_
 
 engine = db_connect()
 create_table(engine)
@@ -19,15 +21,12 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-def updatefiletos3(filepath):
-    conn = S3Connection(access_key, secret_key)
-    b = conn.get_bucket('refractiveindex')
-    k = Key(b)
-    k.key = uuid.uuid4()
-    k.set_contents_from_filename(filepath)
-    k.set_acl('public-read')
-    return k.generate_url(expires_in=0, query_auth=False)
-
+def scrapdata(url):
+    response = urllib2.urlopen(url)
+    htmldata = response.read().replace(',', ' ')
+    htmldata = htmldata.replace('\r', '')
+    htmldata = htmldata.replace('wl n\n', '')
+    return htmldata
 
 for element in os.listdir(mypath):
     newdir = mypath + '/' + element
@@ -35,22 +34,26 @@ for element in os.listdir(mypath):
         filepath = newdir + '/' + elementlist
         with open(filepath) as f:
             doc = yaml.load(f)
-        datalink = updatefiletos3(filepath)
         title = elementlist.replace('.yml', '')
-        parentelement = session.query(Element).filter(Element.title == element).one()
         try:
-            references = doc['REFERENCES']
-        except:
-            references = ''
-        try:
-            comments = doc['COMMENTS']
-        except:
-            comments = ''
-        datatype = doc['DATA'][0]['type']
-        print(title)
-        print(datalink)
-        newelementlist = Elementlist(element=parentelement, title=title, references=references, comments=comments,
-                                    type=datatype, datalink=datalink)
-        session.add(newelementlist)
-        session.commit()
+            import time
+            time.sleep(1)
+            parentelement = session.query(Element).filter(Element.title == element).one()
+            url = 'http://refractiveindex.info/tmp/other/' + element + '/' + title.replace(' ', '%20') + '.csv'
+            print(element)
+            try:
+                dataexist = doc['DATA'][0]['data']
+            except KeyError:
+                data = scrapdata(url)
+                doc['DATA'][0]['data'] = data
+            stmt = update(Elementlist).where(and_(Elementlist.element == parentelement, Elementlist.title == title)).\
+                values(data=doc)
+            session.execute(stmt)
+            session.commit()
+        except urllib2.HTTPError:
+            print colored(element, 'red')
+            print colored(title, 'red')
+            print('\n')
+
+
 

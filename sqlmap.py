@@ -1,6 +1,7 @@
 __author__ = 'yutongpang'
 import settings
-from sqlalchemy import create_engine, Column, String, Integer, ForeignKey, Float
+from sqlalchemy import create_engine, Column, String, Integer, ForeignKey
+from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.engine.url import URL
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -31,6 +32,7 @@ class Element(DeclarativeBase):
     title = Column(String, unique=True)
     elementlist = relationship('Elementlist')
 
+
 class Elementlist(DeclarativeBase):
     __tablename__ = 'refractiveindexdatabase_elementlist'
     id = Column(Integer, primary_key=True)
@@ -41,3 +43,4 @@ class Elementlist(DeclarativeBase):
     comments = Column(String, default='')
     type = Column(String)
     datalink = Column(String)
+    data = Column(JSON)
